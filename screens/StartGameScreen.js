@@ -40,6 +40,7 @@ const StartGameScreen = (props) => {
     setConfirmed(true)
     setSelectedNumber(chosenNumber)
     setEnteredValue('')
+    Keyboard.dismiss()
   }
 
   let conFirmedOutPut
@@ -133,6 +134,7 @@ const styles = StyleSheet.create({
 
   summary: {
     marginTop: 20,
+    alignItems: 'center',
   },
 })
 
