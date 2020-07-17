@@ -5,6 +5,7 @@ import StartGameScreen from './screens/StartGameScreen'
 import GameScreen from './screens/GameScreen'
 import GameOverScreen from './screens/GameOverScreen'
 import * as Font from 'expo-font'
+import { AppLoading } from 'expo'
 
 const fonts = () => {
   return Font.loadAsync({
@@ -16,6 +17,17 @@ const fonts = () => {
 export default function App() {
   const [userNumber, setUserNumber] = useState()
   const [guessRounds, setGuessRounds] = useState(0)
+  const [dataLoaded, setDataLoaded] = useState(false)
+
+  if (!dataLoaded) {
+    return (
+      <AppLoading
+        startAsync={fonts}
+        onFinish={() => setDataLoaded(true)}
+        onError={(err) => console.log(err)}
+      />
+    )
+  }
 
   const newGameHandler = () => {
     setGuessRounds(0)
